@@ -67,8 +67,8 @@ RUN mv /checkpoint_best_legacy_500.pt /pretrain/checkpoint_best_legacy_500.pt &&
     mv /rmvpe.pt /pretrain/rmvpe.pt && \
     rm /checkpoint_best_legacy_500.pt && \
     rm /G_125600.pth && \
-    rm /nsf_hifigan/model && \
-    rm /mvpe.pt
+    rm /model && \
+    rm /rmvpe.pt
 
 
 
