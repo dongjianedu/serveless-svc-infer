@@ -13,11 +13,13 @@ ENV SHELL=/bin/bash
 WORKDIR /
 
 # Update and upgrade the system packages (Worker Template)
-RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
-    sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
-    apt-get update -y && \
+RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install --yes --no-install-recommends sudo ca-certificates git wget curl bash libgl1 libx11-6 software-properties-common ffmpeg build-essential libssl-dev libasound2  cmake -y &&\
+    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=b9bdvDBNIjyesDJzu5VZBLDEnrEkv0kcW9pChJ7uc_IKPugmnrj9cke_24zhe4tdZw' -o 'src/pretrain/checkpoint_best_legacy_500.pt' && \
+    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=e22bp7HDbZf8OMpivavRIBX5Cc996MVbgas_ZeXPh4KktWxr8nTMDY6rRJnKWOgh5Q' -o 'src/logs/44k/G_125600.pth' && \
+    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=5e55WH7qyLtw-EGxsHPyeShGKN0_ZnUFe5LXWSg9IATpdAahB3SxKKYUqln2Ox4jZg' -o 'src/pretrain/nsf_hifigan/model' && \
+    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=44a98cr7LOBkMhvpwzPgG_NLZLiD3jVZ_-stEAXY0NC_bGnvnZ2_2liIXMypSDgtrQ' -o 'src/pretrain/rmvpe.pt' && \
     wget http://cdn.mytunnel.top/cmake-3.22.1.tar.gz && \
     tar -xvzf cmake-3.22.1.tar.gz -C /usr/share/ && \
     cd /usr/share/cmake-3.22.1 && \
@@ -53,10 +55,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     rm /requirements.txt
 
 
-RUN curl 'http://pan.mytunnel.top/?explorer/share/file&hash=b9bdvDBNIjyesDJzu5VZBLDEnrEkv0kcW9pChJ7uc_IKPugmnrj9cke_24zhe4tdZw' > 'src/pretrain/checkpoint_best_legacy_500.pt' && \
-    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=e22bp7HDbZf8OMpivavRIBX5Cc996MVbgas_ZeXPh4KktWxr8nTMDY6rRJnKWOgh5Q' > 'src/logs/44k/G_125600.pth' && \
-    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=5e55WH7qyLtw-EGxsHPyeShGKN0_ZnUFe5LXWSg9IATpdAahB3SxKKYUqln2Ox4jZg' > 'src/pretrain/nsf_hifigan/model' && \
-    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=44a98cr7LOBkMhvpwzPgG_NLZLiD3jVZ_-stEAXY0NC_bGnvnZ2_2liIXMypSDgtrQ' > 'src/pretrain/rmvpe.pt' && \
+
 
 
 # Copy source code into image
