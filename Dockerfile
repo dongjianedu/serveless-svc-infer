@@ -61,10 +61,10 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Copy source code into image
 COPY src .
 
-RUN mv checkpoint_best_legacy_500.pt /pretrain/checkpoint_best_legacy_500.pt && \
-    mv G_125600.pth /logs/44k/G_125600.pth && \
-    mv nsf_hifigan/model /pretrain/nsf_hifigan/model && \
-    mv rmvpe.pt /pretrain/rmvpe.pt && \
+RUN mv /checkpoint_best_legacy_500.pt /pretrain/checkpoint_best_legacy_500.pt && \
+    mv /G_125600.pth /logs/44k/G_125600.pth && \
+    mv /model /pretrain/nsf_hifigan/model && \
+    mv /rmvpe.pt /pretrain/rmvpe.pt && \
     rm /checkpoint_best_legacy_500.pt && \
     rm /G_125600.pth && \
     rm /nsf_hifigan/model && \
