@@ -20,7 +20,7 @@ RUN apt-get update -y && \
     curl 'http://pan.mytunnel.top/?explorer/share/file&hash=e22bp7HDbZf8OMpivavRIBX5Cc996MVbgas_ZeXPh4KktWxr8nTMDY6rRJnKWOgh5Q' -o 'G_125600.pth' && \
     curl 'http://pan.mytunnel.top/?explorer/share/file&hash=5e55WH7qyLtw-EGxsHPyeShGKN0_ZnUFe5LXWSg9IATpdAahB3SxKKYUqln2Ox4jZg' -o 'nsf_hifigan/model' && \
     curl 'http://pan.mytunnel.top/?explorer/share/file&hash=44a98cr7LOBkMhvpwzPgG_NLZLiD3jVZ_-stEAXY0NC_bGnvnZ2_2liIXMypSDgtrQ' -o 'mvpe.pt' && \
-    wget http://cdn.mytunnel.top/cmake-3.22.1.tar.gz && \
+    wget -O 'cmake-3.22.1.tar.gz' 'http://pan.mytunnel.top/?explorer/share/file&hash=4ef30G-sb1cAZr6a5GtmhrudUg7vPhf0IzOpJ3fC0hX7ox0HJUi4kUKTlrj6Q-UmRw' && \
     tar -xvzf cmake-3.22.1.tar.gz -C /usr/share/ && \
     cd /usr/share/cmake-3.22.1 && \
     ./configure && \
@@ -43,7 +43,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa -y && \
     rm -rf /var/lib/apt/lists/*
 
 # Download and install pip
-RUN curl http://cdn.mytunnel.top/get-pip.py -o get-pip.py && \
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python get-pip.py && \
     rm get-pip.py
 
