@@ -1,0 +1,29 @@
+# Required Python packages get listed here, one per line.
+# Reccomended to lock the version number to avoid unexpected changes.
+
+runpod==1.2.1
+# git+https://github.com/runpod/runpod-python.git
+
+# torch==2.0.1
+
+ffmpeg-python
+numpy==1.23.5
+pyworld
+scipy==1.10.0
+SoundFile==0.12.1
+torch
+torchaudio
+torchcrepe
+tqdm
+onnx
+onnxsim
+onnxoptimizer
+fairseq==0.12.2
+librosa==0.9.1
+transformers
+pynvml
+faiss-cpu
+einops
+local_attention
+matplotlib
+azure-cognitiveservices-speech
