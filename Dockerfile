@@ -53,6 +53,11 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     rm /requirements.txt
 
 
+RUN curl 'http://pan.mytunnel.top/?explorer/share/file&hash=b9bdvDBNIjyesDJzu5VZBLDEnrEkv0kcW9pChJ7uc_IKPugmnrj9cke_24zhe4tdZw' > 'src/pretrain/checkpoint_best_legacy_500.pt' && \
+    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=e22bp7HDbZf8OMpivavRIBX5Cc996MVbgas_ZeXPh4KktWxr8nTMDY6rRJnKWOgh5Q' > 'src/logs/44k/G_125600.pth' && \
+    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=5e55WH7qyLtw-EGxsHPyeShGKN0_ZnUFe5LXWSg9IATpdAahB3SxKKYUqln2Ox4jZg' > 'src/pretrain/nsf_hifigan/model' && \
+    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=44a98cr7LOBkMhvpwzPgG_NLZLiD3jVZ_-stEAXY0NC_bGnvnZ2_2liIXMypSDgtrQ' > 'src/pretrain/rmvpe.pt' && \
+
 
 # Copy source code into image
 COPY src .
