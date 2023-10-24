@@ -63,7 +63,7 @@ COPY src .
 RUN mv /checkpoint_best_legacy_500.pt /pretrain/checkpoint_best_legacy_500.pt && \
     mv /G_125600.pth /logs/44k/G_125600.pth && \
     mv /model /pretrain/nsf_hifigan/model && \
-    mv /rmvpe.pt /pretrain/rmvpe.pt && \
+    mv /rmvpe.pt /pretrain/rmvpe.pt
 
 
 
