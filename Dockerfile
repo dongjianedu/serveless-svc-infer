@@ -16,10 +16,6 @@ WORKDIR /
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install --yes --no-install-recommends sudo ca-certificates git wget curl bash libgl1 libx11-6 software-properties-common ffmpeg build-essential libssl-dev libasound2  cmake -y &&\
-    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=b9bdvDBNIjyesDJzu5VZBLDEnrEkv0kcW9pChJ7uc_IKPugmnrj9cke_24zhe4tdZw' -o 'checkpoint_best_legacy_500.pt' && \
-    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=e22bp7HDbZf8OMpivavRIBX5Cc996MVbgas_ZeXPh4KktWxr8nTMDY6rRJnKWOgh5Q' -o 'G_125600.pth' && \
-    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=5e55WH7qyLtw-EGxsHPyeShGKN0_ZnUFe5LXWSg9IATpdAahB3SxKKYUqln2Ox4jZg' -o 'model' && \
-    curl 'http://pan.mytunnel.top/?explorer/share/file&hash=44a98cr7LOBkMhvpwzPgG_NLZLiD3jVZ_-stEAXY0NC_bGnvnZ2_2liIXMypSDgtrQ' -o 'rmvpe.pt' && \
     wget -O 'cmake-3.22.1.tar.gz' 'http://pan.mytunnel.top/?explorer/share/file&hash=4ef30G-sb1cAZr6a5GtmhrudUg7vPhf0IzOpJ3fC0hX7ox0HJUi4kUKTlrj6Q-UmRw' && \
     tar -xvzf cmake-3.22.1.tar.gz -C /usr/share/ && \
     cd /usr/share/cmake-3.22.1 && \
@@ -55,7 +51,10 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     rm /requirements.txt
 
 
-
+# Fetch the model
+COPY builder/fetch_models.py /fetch_models.py
+RUN python /fetch_models.py && \
+    rm /fetch_models.py
 
 
 # Copy source code into image
@@ -65,10 +64,6 @@ RUN mv /checkpoint_best_legacy_500.pt /pretrain/checkpoint_best_legacy_500.pt &&
     mv /G_125600.pth /logs/44k/G_125600.pth && \
     mv /model /pretrain/nsf_hifigan/model && \
     mv /rmvpe.pt /pretrain/rmvpe.pt && \
-    rm /checkpoint_best_legacy_500.pt && \
-    rm /G_125600.pth && \
-    rm /model && \
-    rm /rmvpe.pt
 
 
 

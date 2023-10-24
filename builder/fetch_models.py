@@ -1,29 +1,18 @@
-from concurrent.futures import ThreadPoolExecutor
-from faster_whisper import WhisperModel
+from huggingface_hub import hf_hub_download
+import joblib
 
-model_names = ["tiny"]
+REPO_ID = "deejac/zhanyin"
+FILENAME = "model"
+hf_hub_download(repo_id=REPO_ID, filename=FILENAME,local_dir="./",repo_type="model")
 
+FILENAME = "G_125600.pth"
+hf_hub_download(repo_id=REPO_ID, filename=FILENAME,local_dir="./",repo_type="model")
 
-def load_model(selected_model):
-    '''
-    Load and cache models in parallel
-    '''
-    for _attempt in range(5):
-        while True:
-            try:
-                loaded_model = WhisperModel(
-                    selected_model, device="cpu", compute_type="int8")
-            except (AttributeError, OSError):
-                continue
+FILENAME = "checkpoint_best_legacy_500.pt"
+hf_hub_download(repo_id=REPO_ID, filename=FILENAME,local_dir="./",repo_type="model")
 
-            break
-
-    return selected_model, loaded_model
+FILENAME = "rmvpe.pt"
+hf_hub_download(repo_id=REPO_ID, filename=FILENAME,local_dir="./",repo_type="model")
 
 
-models = {}
 
-with ThreadPoolExecutor() as executor:
-    for model_name, model in executor.map(load_model, model_names):
-        if model_name is not None:
-            models[model_name] = model
