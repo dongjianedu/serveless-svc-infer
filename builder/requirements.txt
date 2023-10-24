@@ -27,3 +27,4 @@ einops
 local_attention
 matplotlib
 azure-cognitiveservices-speech
+huggingface_hub
