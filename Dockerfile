@@ -16,14 +16,14 @@ WORKDIR /
 RUN apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install --yes --no-install-recommends sudo ca-certificates git wget curl bash libgl1 libx11-6 software-properties-common ffmpeg build-essential libssl-dev libasound2  cmake -y &&\
-    wget -O 'cmake-3.22.1.tar.gz' 'http://pan.mytunnel.top/?explorer/share/file&hash=4ef30G-sb1cAZr6a5GtmhrudUg7vPhf0IzOpJ3fC0hX7ox0HJUi4kUKTlrj6Q-UmRw' && \
-    tar -xvzf cmake-3.22.1.tar.gz -C /usr/share/ && \
-    cd /usr/share/cmake-3.22.1 && \
-    ./configure && \
-    chmod 777 ./configure && \
-    make  -j4&& \
-    make install && \
-    update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force && \
+    #wget -O 'cmake-3.22.1.tar.gz' 'http://pan.mytunnel.top/?explorer/share/file&hash=4ef30G-sb1cAZr6a5GtmhrudUg7vPhf0IzOpJ3fC0hX7ox0HJUi4kUKTlrj6Q-UmRw' && \
+    #tar -xvzf cmake-3.22.1.tar.gz -C /usr/share/ && \
+    #cd /usr/share/cmake-3.22.1 && \
+    #./configure && \
+    #chmod 777 ./configure && \
+    #make  -j4&& \
+    #make install && \
+    #update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 1 --force && \
     apt-get autoremove -y && \
     apt-get clean -y && \
     rm -rf /var/lib/apt/lists/*
